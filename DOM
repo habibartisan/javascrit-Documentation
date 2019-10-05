@@ -1,1 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Inspecting DOM</title>
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  />
+       <style>
+      .custom {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <h1 class="h1">Product List</h1>
+      <hr />
+      <ul class="product-collection  mb-3">
+        <li class="product-collection-item" id="sample">Shoes</li>
+        <li class="product-collection-item">T- Shirt</li>
+        <li class="product-collection-item">Laptop</li>
+        <li class="product-collection-item">Microphone</li>
+        <li class="product-collection-item">sneakers</li>
+      </ul>
+      <!-- <a href="#">Link</a> -->
+      <!-- <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-danger">Danger</button>
+      <div class="mb-5"></div> -->
+      <form action="/" method="POST" class="product-form">
+        <input type="text" name="productName" id="productName" />
+        <input type="submit" value="Submit" class="btb btn-primary" />
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="dom.js"></script>
+  </body>
+</html>
+========================================== +++ ===================================================== +++ ===============================
+
+
+
+
+                                           DOM ==    Document Object Model
+                                 DOM ব্রাউজারের মাধ্যমে user- interaction করার সুযোগ করে দেয়
+                         User কিছু একটা করলে Than  ওয়েবসাইটে কিছু একটা হলে তাকে Interaction বলে
+  ---------------------------------------------------------------------------------------------------------------------------------------
+  DOM হচ্ছে একটি Tree like data স্ট্রাকচার যে স্ট্রাকচার যে কোনো কিছু চেঞ্জ করতে পারে নতুন Data Insert, Edit, Delete,
+  করতে পারে জাভাস্ক্রিপ্ট এর মাধ্যমে
+
+  DOM হচ্ছে একটি System যা মা-ধ্যমে Html এর Code গুলো-কে Javascript এর মাধ্যমে Change করতে পারে এবং 
+   নতুন এলিমেন্ট Insert, Edit, Delete,  করতে পারে
+   কিন্তু ব্রাউজার রিফ্রেশ করলে আগে-র মত হয়ে যাবে
+---------------------------------------------------------------------------------------------------------------------------------------- 
+        Usages:
+     -----------------
+                Games
+                Scrolling Effects
+                Dropdown menus
+                Form Validations
+                Interactivity
+                Animations
+                Every awesome site ever
+
+        ব্রাউজার প্রতিটা Html Tag কে এক একটা Node এ Converter করে, প্রতিটা Node Basically এক একটা Object
+                        HTML        ----------- Tag / Elements
+                        Javascript  ----------- Node / Child element 
+
+        Getting info:
+   ------------------
+                document.URL;
+                document.head;
+                document.body;
+                document.links;
+
+        window হচ্ছে Top Most Object,  window সাথে Attached যে key গুলো আছে সেগুলো ক্ষেত্রে window না লিখলে-ও চলবে যেমন document
+                        console.log();           ----------- Html   আকারে দেখাবে
+                        console.dir();            ----------- Object আকারে দেখাবে
+
+       How to used:
+   -----------------
+       let val;
+        // val = document;
+        // val = document.all;
+        // val = document.all[5];
+        // val = document.head;
+        // val = document.title;
+        // val = document.body;
+        // val = document.body.className;
+        // val = document.body.id;
+        // val = document.links[0];
+        // val = document.links[0].getAttribute("href");
+        // val = document.characterSet;
+        // val = document.forms[0];
+        // val = document.forms[0].action;
+        // val = document.forms[0].method;
+        // val = document.scripts;
+        // console.log(val);
+---------------------------------------------------------------------------------------------------------------------------------------
+        ** Finding HTML Elements
+        ===========================
+            htmlcollection:
+            ---------------
+                       document.getElementById();
+                         document.getElementsByClassName();
+                         document.getElementsByTagName();
+            node-collection:
+            ----------------
+                         document.querySelector();
+                         document.querySelectorAll();
+
+                1. document.getElementById()                --  id দ্বারা এলিমেন্টকে খুঁজে বের করা হয়        
+                2. document.getElementsByClassName()   -- class দ্বারা এলিমেন্টকে খুঁজে বের করা হয়
+                3. document.getElementsByTagName()     -- Tag নাম দিয়ে এলিমেন্টকে খুঁজে বের করা হয়
+                4. document.querySelector()                    -- টি খুবই পাওয়ারফুল
+                5. document.querySelectorAll()                -- same here 
+
+           এটির মাধ্যমে id, class. tag কে যেকোন ভাবে ব্যবহার করতে পারবেন |
+                   এবং Css এর যতগুলো সিলেক্টর আছে সব গুলো সিলেক্টর কে এই  এর মাধ্যমে আমরা 
+                          ব্যবহার করতে পারবো |
+
+
+        Htmlcollection এবং Node-list এই দুই টার মধ্যে Basically পার্থক্য হচ্ছে
+        Htmlcollection -- এর মধ্যে আপনি চাইলে Array এর সমস্ত method run করতে পারবেন না
+        Node-list         -- এর মধ্যে আপনি চাইলে Array এর সমস্ত method runকরতে পারবেন
+
+
+
+
+
+Accessing Specific element (better than)
+let val;
+// val = document.getElementById("container");
+// val = document.getElementsByClassName("container")[0];
+// val = document.getElementsByTagName("body")[0];
+// val = document.querySelector("#container");
+// val = document.querySelector(".product-collection-item");
+// val = document.querySelectorAll(".product-collection-item")[1];
+
+      **//  querySelector স্পেসিফিক না -- এই জন্য আপনাকে যা করতে হবে  //**
+          id, class. tag ধরে access করতে হবে
+
+HTMLCollection You can't  access all array specific method .if you want to please try Array.form()
+=========================================================
+// val = document.getElementsByClassName("product-collection-item");
+// val = Array(val);
+// val.forEach(node => console.log(node));
+// for (let i = 0; i < val.length; i++) {
+//   console.log(val[i]);
+// }
+// for (let node of val) {
+//   console.log(node);
+// }
+
+
+//NodeList -You can access all array method
+//========================================================
+// val = document.querySelectorAll(".product-collection-item");
+// console.log(val);
+// val.forEach(node => console.log(node));
+// for (let i = 0; i < val.length; i++) {
+//   console.log(val[i]);
+// }
+// for (let node of val) {
+//   console.log(node);
+// }
+// console.log(val);
+
+                           Manipulate  ---- পরিবর্তন করা
+                     ------------------------------------------
+Html element/tag কে পরিবর্তন করাকে ম্যানিপুলেট বলে এর পার্ট 2 টি 
+Selection
+Manipulation
+
+selection
+//selection
+// val = document.querySelector(".product-collection-item");
+
+Manipulation
+// val.style.color = "red";
+// val.style.backgroundColor = "Green";
+// val.textContent = "Microphone";
+// val.innerText = "Shirt";
+// val.innerHTML = "<em>Shirt</em>";
+// val = document.querySelector("a");
+// val = document.querySelector("a").getAttribute("href");
+// val = document.querySelector("a").setAttribute("href", "https://facebook.com");
+
+// val = document.querySelector(".product-collection-item");
+//val = val.classList;
+// val.className;
+// val.className = "MyClass";
+// val.classList.add("MyClass");
+
+Traversing------chaining
+// val = document.querySelector(".product-collection");
+// console.log(val);
+// val =val.children.length;
+// console.log(val);
+// val =val.children[0];
+// console.log(val);
+// val =val.children[0].nextElementSibling.
+// console.log(val);
+// val =val.children[0].nextElementSibling.nextElementSibling;
+// console.log(val);
+// val =
+val.children[0].nextElementSibling.nextElementSibling.previousElementSibling.parentElement
+//     .parentElement;
+
+
+Create Element
+    <li class="product-collection-item">sneakers</li>;
+// const ul = document.querySelector("ul");
+// const li = document.createElement("li");
+// li.className = "product-collection-item";
+// li.appendChild(document.createTextNode("MyItem"));
+// ul.prepend(li);
+                 // console.log(ul);
+
+Replacing Element
+// const oldHeading = document.querySelector(".h1");
+// const newHeading = document.createElement("h1");
+// newHeading.appendChild(document.createTextNode("My   Updated Product List"));
+// const container = document.querySelector(".container");
+// container.replaceChild(newHeading, oldHeading);
+// oldHeading.replaceWith(newHeading);
+
+Removing Element
+// const list = document.querySelector("ul.product-collection");
+// list.lastElementChild.remove();
+
+//list.removeChild(list.lastElementChild);
+//You can also access by following way
+//selecting element
+// const li = document.querySelector("li:nth-child(5)");
+// li.remove()
+//OR this way
+// const li = document.querySelector("li:last-child");
+// li.remove();
+
+// console.log(ul);
+// console.log(list);
+
+
+
+
+
+                  DOM EVENTS ---  
+  ========================================================
+                        https://developer.mozilla.org/en-US/docs/Web/Events
+
+Events are everywhere:
+Clicking on a button
+Hovering over a link
+Dragging and Dropping
+Pressing the Enter key
+
+The Syntax:
+              element.addEventListener(type, functionToCall);
+
+     Example:
+lat button = document.querySelector("button");
+button.addEventListener("click", function(){
+     console.log("Someone clicked the button!");
+});
+
+Some Importants Events:
+click
+dbclick
+mouseover
+keypress
+drag
+
+// const h1 = document.querySelector("h1");
+// const li = document.querySelector("li");
+// const lis = document.querySelectorAll("li");
+// const ul = document.querySelector("ul");
+// const form = document.forms[0];
+// const input = document.getElementById("productName");
+
+      const h1 = document.querySelector("h1");
+h1.addEventListener("click", function(){ 
+  console.log("Type:", evt.type);
+  console.log("Target:", evt.target);
+  console.log("Offset-x:", evt.offsetX);
+  console.log("Offset-y:", evt.offsetY);
+  console.log("Cline-x:", evt.clientxX);
+  console.log("Cline-y:", evt.clientxY);
+  console.log("Clicked H1:");
+  });
+
+-----------------------------------------Alternative way----------------------------
+      function evtInformation(evt) {
+//   evt.preventDefault();
+//   console.log("Type:", evt.type);
+//   console.log("Target", evt.target);
+//   const li = document.createElement("li");
+//   li.textContent = input.value;
+//   li.className = "product-collection-item";
+//   ul.appendChild(li);
+// console.log("Target value", evt.target.innerText);
+// console.log("Offset-x", evt.offsetX);
+// console.log("offset-y", evt.offsetY);
+// console.log("Client-x", evt.clientX);
+// console.log("Cline-y", evt.clientY);
+// console.log("Clicked H1");
+ }
+
+// h1.addEventListener("click", evtInformation);
+// h1.addEventListener("dblclick", evtInformation);
+// li.addEventListener("click", evtInformation); [do the 1st li select] 
+-----------------------------------------------------------------------------------------
++++  If you show the all elements than run the loop++++++
+
+// lis.forEach(li => {
+//   li.addEventListener("click", evtInformation);
+// });
+// ul.addEventListener("click", evt => {
+//   if ((evt.target.className = "product-collection-item")) {
+//     console.log(evt.target);
+//   }
+// });
+
+// form.addEventListener("submit", evtInformation);
+
+
+
+      Event bubbling --child to parent
+---------------------------------------------------------------------
+// const li = document.querySelector("li");
+// const ul = document.querySelector("ul");
+// const container = document.querySelector(".container");
+
+// li.addEventListener("click", () => {
+//   console.log("You clicked li");
+// });
+// ul.addEventListener("click", () => {
+//   console.log("You clicked ul");
+// });
+// container.addEventListener("click", () => {
+//   console.log("You clicked ul");
+// });
+
+      Event delegation -- parent to child 
+-----------------------------------------------------------------------------------------
+// const container = document.querySelector(".container");
+//   container.addEventListener("click", evt => {
+//    console.log(env.target);
+//  });
+
+// container.addEventListener("click", evt => {
+//   if (evt.target.id === "sample") {
+//       console.log(evt.target);
+//       evt.target.classList.add("custom");
+//   }
+// });
+
+Event delegation -- practical Example 
+---------------------------------------------------------------------
+      // const ul = document.querySelector("ul");
+// const form = document.forms[0];
+// const input = document.getElementById("productName");
+               function evtInformation(evt) {
+ //   evt.preventDefault();
+                     //   console.log("Type:", evt.type);
+                     //   console.log("Target:", evt.target);
+                    //   console.log("Input Value:", input.value);
+                    //   const li = document.createElement("li");
+     //   li.textContent = input.value;
+     //   li.className = "product-collection-item";
+     //   ul.appendChild(li);
+}
+// form.addEventListener("submit", evtInformation);    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
